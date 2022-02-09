@@ -39,4 +39,43 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
-print(products)
+
+
+
+
+
+
+#CAPTURING USER INPUT
+product_id = input("Please input a product identifier: ")
+
+
+#input function is going to give string datatype!!! 
+#print(type(product_id)) to confirm in code beforehand 
+
+
+print(product_id)
+
+
+
+
+#LOOKUP PRODUCTS 
+
+matching_products = []
+for x in products:
+    if str(x["id"]) == str(product_id):
+        #this is a match! user input is equal to an ID attribute in the list of products 
+        matching_products.append(x)
+
+print(matching_products)
+    #x is referencing each item in the list of dictionaries 
+    #each dictionary has certain keys 
+    #print the name via the corresponding integer/index 
+matching_product = matching_products[0]
+print(matching_product["name"], matching_product["price"])
+
+
+#PRINTING THE RECEIPT
+
+
+
+
