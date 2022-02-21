@@ -70,16 +70,41 @@ while True:
         if str(x["id"]) == str(product_id): 
             matching_products.append(x)
     if product_id == "DONE" or product_id == "Done" or product_id == "done":
-        print("Thank you! SHOPPING CART ITEM IDENTIFIERS INCLUDE:", ID_numbers)
-        for p in matching_products: 
-            print("+", p["name"], to_usd(p["price"]))
-            totalprice = totalprice + p["price"]
+        print("THANKS! SHOPPING CART IDENTIFIERS INCLUDE:", ID_numbers)
         break
-            
+
+
+
+from datetime import date 
+
+fdate = date.today().strftime('%m/%d/%Y')
+
+from datetime import datetime
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+
+
+#PRINTING THE RECEIPT     
 print("---------------")
-print("Total Price is:", to_usd(totalprice))
+print("GitHub Grocery")
+print("wwww.github-grocery.com")
 print("---------------")
+print("CHECKOUT AT:", fdate, current_time)
+print("---------------")
+print(" ")
+for p in matching_products: 
+    print("+", p["name"], "(", to_usd(p["price"]), ")")
+    totalprice = totalprice + p["price"]
+print("---------------")
+print("Subtotal:", to_usd(totalprice))
 
 
-
-#PRINTING THE RECEIPT
+#print(type(totalprice))
+subtotal = int(totalprice)
+#print(type(subtotal))
+tax_amt = subtotal * 0.0875 
+print("Tax:", to_usd(tax_amt))
+total_amt = subtotal + tax_amt
+print("YOUR TOTAL IS:", to_usd(total_amt))
+print("---------------")
+print("Thank You for Shopping at Github Grocery. Have a Nice Day!")
