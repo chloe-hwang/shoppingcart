@@ -44,34 +44,47 @@ def to_usd(my_price):
 
 
 
-
 #CAPTURING USER INPUT
-product_id = input("Please input a product identifier: ")
 
+valid_input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+valid_inputs = str(valid_input) + "Done" + "DONE" + "done"
+#print(type(valid_inputs))
+
+end_list = ["Done", "DONE", "done"]
+
+while True:
+    product_id = input("Please input a product identifier, or DONE if no more items: ")
+    if product_id not in valid_inputs:
+        print("Sorry, that product ID is not valid. Please try again.")
+    matching_products = []
+    for x in products:
+        if str(x["id"]) == str(product_id):
+        #this is a match! user input is equal to an ID attribute in the list of products 
+            matching_products.append(x)
+            matching_product = matching_products[0]
+            print(matching_product["name"], matching_product["price"])
+    if (product_id == "DONE" or product_id == "Done" or product_id == "done"):
+        print("Thank you!")
+        break
+    
 
 #input function is going to give string datatype!!! 
-#print(type(product_id)) to confirm in code beforehand 
+    #print(type(product_id)) to confirm in code beforehand (will say <class 'str'>)
+    #print("PRODUCT ID:", product_id)
 
 
-print(product_id)
+#VALIDATING USER INPUT 
 
 
 
 
 #LOOKUP PRODUCTS 
 
-matching_products = []
-for x in products:
-    if str(x["id"]) == str(product_id):
-        #this is a match! user input is equal to an ID attribute in the list of products 
-        matching_products.append(x)
+        #print(matching_products)
+            #x is referencing each item in the list of dictionaries 
+            #each dictionary has certain keys 
 
-print(matching_products)
-    #x is referencing each item in the list of dictionaries 
-    #each dictionary has certain keys 
-    #print the name via the corresponding integer/index 
-matching_product = matching_products[0]
-print(matching_product["name"], matching_product["price"])
+        #print the name via the corresponding integer/index 
 
 
 #PRINTING THE RECEIPT
