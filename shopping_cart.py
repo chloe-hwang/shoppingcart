@@ -91,20 +91,16 @@ print("wwww.github-grocery.com")
 print("---------------")
 print("CHECKOUT AT:", fdate, current_time)
 print("---------------")
-print(" ")
+print("Selected Products:")
 for p in matching_products: 
     print("+", p["name"], "(", to_usd(p["price"]), ")")
     totalprice = totalprice + p["price"]
 print("---------------")
 print("Subtotal:", to_usd(totalprice))
 
-
-#print(type(totalprice))
-subtotal = int(totalprice)
-#print(type(subtotal))
-tax_amt = subtotal * 0.0875 
+tax_amt = totalprice*0.0875 
 print("Tax:", to_usd(tax_amt))
-total_amt = subtotal + tax_amt
+total_amt = totalprice + tax_amt
 print("YOUR TOTAL IS:", to_usd(total_amt))
 print("---------------")
 print("Thank You for Shopping at Github Grocery. Have a Nice Day!")
