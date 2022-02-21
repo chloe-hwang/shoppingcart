@@ -57,35 +57,29 @@ valid_inputs = str(valid_input) + "Done" + "DONE" + "done"
 matching_products = []
 ID_numbers = [] 
 
+totalprice = 0 
+
+
 while True:
     product_id = input("Please input a product identifier, or DONE if no more items: ")
-    if product_id not in valid_inputs:
+    ID_numbers.append(product_id)
+    if product_id not in valid_inputs: 
         print("Sorry, that product ID is not valid. Please try again.")
+    #LOOKUP PRODUCTS 
     for x in products:
-        if str(x["id"]) == str(product_id):
-        #this is a match! user input is equal to an ID attribute in the list of products 
+        if str(x["id"]) == str(product_id): 
             matching_products.append(x)
-            ID_numbers.append(product_id)
-            #matching_product = matching_products[0]
-            #print(matching_product["name"], matching_product["price"])
-    if (product_id == "DONE" or product_id == "Done" or product_id == "done"):
+    if product_id == "DONE" or product_id == "Done" or product_id == "done":
         print("Thank you! SHOPPING CART ITEM IDENTIFIERS INCLUDE:", ID_numbers)
+        for p in matching_products: 
+            print("+", p["name"], to_usd(p["price"]))
+            totalprice = totalprice + p["price"]
         break
-    
+            
+print("---------------")
+print("Total Price is:", to_usd(totalprice))
+print("---------------")
 
-
-
-#LOOKUP PRODUCTS 
-
-#for x in products:
-
-
-
-        #print(matching_products)
-            #x is referencing each item in the list of dictionaries 
-            #each dictionary has certain keys 
-
-        #print the name via the corresponding integer/index 
 
 
 #PRINTING THE RECEIPT
